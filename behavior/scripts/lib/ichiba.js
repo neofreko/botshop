@@ -37,5 +37,4 @@ module.exports = (keyword, next) => {
             next(false)
         }
     })
-    carouselify(result)
 }
