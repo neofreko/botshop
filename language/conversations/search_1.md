@@ -3,10 +3,10 @@ title: search_1
 timestamp: 2016-09-22T17:22:37.365246619+09:00
 ---
 
-search [タミヤ](keyword)ミヤミヤミヤミヤ
+search [タミヤ](keyword)
 * commerce/search
 
-< Here are some [タミヤ](keyword)ミヤミヤミヤミヤ
+< Here are some [タミヤ](keyword) for you
 * commerce/search_result
 
 do you have any [Tomica](keyword)?

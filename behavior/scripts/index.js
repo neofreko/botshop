@@ -63,8 +63,8 @@ exports.handle = function handle(client) {
     streams: {
       goodbye: handleGoodbye,
       greeting: handleGreeting,
-      main: 'onboarding',
-      onboarding: [sayHello],
+      main: 'commerce',
+      hi: [sayHello],
       end: [untrained],
       commerce: [commerce.collectKeyword, commerce.provideResult],
     }

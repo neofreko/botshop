@@ -30,7 +30,7 @@ module.exports = client => {
 
 
             prompt() {
-                client.addResponse('app:response:name:commerce/search_result')
+                client.addResponse('app:response:name:prompt/keyword')
                 client.done()
             }
         }),
@@ -41,13 +41,11 @@ module.exports = client => {
             },
 
             prompt() {
-                let weatherData = {
-                    temperature: 60,
-                    condition: 'sunny',
-                    city: client.getConversationState().weatherCity.value,
+                let searchResult = {
+                    keyword: client.getConversationState().keyword.value,
                 }
 
-                client.addResponse('app:response:name:provide_weather/current', weatherData)
+                client.addResponse('app:response:name:commerce/search_result', searchResult)
                 client.done()
             }
         })
