@@ -1,5 +1,3 @@
-'use strict'
-
 exports.handle = function handle(client) {
 
   const sayHello = client.createStep({
@@ -29,17 +27,46 @@ exports.handle = function handle(client) {
     }
   })
 
+  const handleGreeting = client.createStep({
+    satisfied() {
+      return false
+    },
+
+    prompt() {
+      client.addTextResponse('Hello world, I mean human')
+      client.done()
+    }
+  })
+
+  const handleGoodbye = client.createStep({
+    satisfied() {
+      return false
+    },
+
+    prompt() {
+      client.addTextResponse('See you later!')
+      client.done()
+    }
+  })
+
+  const commerce = require('./lib/commerce')(client)
+
   client.runFlow({
     classifications: {
-			// map inbound message classifications to names of streams
+      goodbye: 'goodbye',
+      greeting: 'greeting',
+      commerce: 'commerce'
     },
     autoResponses: {
       // configure responses to be automatically sent as predicted by the machine learning model
     },
     streams: {
+      goodbye: handleGoodbye,
+      greeting: handleGreeting,
       main: 'onboarding',
       onboarding: [sayHello],
-      end: [untrained]
+      end: [untrained],
+      commerce: [commerce.collectKeyword, commerce.provideResult],
     }
   })
 }
