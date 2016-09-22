@@ -43,12 +43,13 @@ module.exports = client => {
             satisfied() {
                 return false
             },
-
             prompt() {
+                let keyword = client.getConversationState().keyword.value
                 //client.addResponse('app:response:name:commerce/search_result', searchResult)
-                ichiba(client.getConversationState().keyword.value, (res) => {
+                ichiba(keyword, (res) => {
                     if (res) {
                         console.log(res)
+                        client.addResponse('app:response:name:commerce/search_result', {keyword})
                         client.addCarouselListResponse(res)
                     } else {
                         client.addTextResponse('Sorry, I cannot found any item matching your query. Try something else')
