@@ -17,7 +17,7 @@ module.exports = client => {
 
         collectKeyword: client.createStep({
             satisfied() {
-                return client.getConversationState().keyword
+                return Boolean(client.getConversationState().keyword)
             },
 
             extractInfo() {

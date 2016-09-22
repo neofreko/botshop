@@ -4,7 +4,7 @@ exports.handle = function handle(client) {
 
   const introduceSelf = client.createStep({
     satisfied() {
-      return Boolean(client.getConversationState().helloSent)
+      return false
     },
 
     prompt() {
