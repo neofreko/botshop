@@ -1,3 +1,5 @@
+'use strict'
+
 exports.handle = function handle(client) {
 
   const introduceSelf = client.createStep({

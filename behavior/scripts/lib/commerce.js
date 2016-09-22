@@ -1,3 +1,5 @@
+'use strict'
+
 let ichiba = require('./ichiba')
 
 const firstOfEntityRole = function(message, entity, role) {
