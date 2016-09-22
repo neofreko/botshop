@@ -1,3 +1,5 @@
+let ichiba = require('./ichiba')
+
 const firstOfEntityRole = function(message, entity, role) {
     role = role || 'generic';
 
@@ -10,10 +12,10 @@ const firstOfEntityRole = function(message, entity, role) {
 
 module.exports = client => {
     return {
-        
+
         collectKeyword: client.createStep({
             satisfied() {
-                return false
+                return client.getConversationState().keyword
             },
 
             extractInfo() {
@@ -41,12 +43,20 @@ module.exports = client => {
             },
 
             prompt() {
-                let searchResult = {
-                    keyword: client.getConversationState().keyword.value,
-                }
+                //client.addResponse('app:response:name:commerce/search_result', searchResult)
+                ichiba(client.getConversationState().keyword.value, (res) => {
+                    if (res) {
+                        console.log(res)
+                        client.addCarouselListResponse(res)
+                    } else {
+                        client.addTextResponse('Sorry, I cannot found any item matching your query. Try something else')
+                    }
+                    client.done()
+                })
 
-                client.addResponse('app:response:name:commerce/search_result', searchResult)
-                client.done()
+                client.updateConversationState({
+                    keyword: null,
+                })
             }
         })
     }

@@ -1,14 +1,14 @@
 exports.handle = function handle(client) {
 
-  const sayHello = client.createStep({
+  const introduceSelf = client.createStep({
     satisfied() {
       return Boolean(client.getConversationState().helloSent)
     },
 
     prompt() {
-      client.addTextResponse('Hello world!')
-      client.addTextResponse('I don\'t know much yet, but if you need some pointers on where to get started you should check out the docs – http://docs.init.ai/?key=c0fb-addc-119f')
-      client.addTextResponse('Otherwise, head over to Teach (up at the top) and start teaching me!')
+      client.addTextResponse('Hello human')
+      client.addTextResponse('I can help you search any e-commerce item')
+      client.addTextResponse('Tell me any keyword to look for')
       client.updateConversationState({
         helloSent: true
       })
@@ -23,17 +23,6 @@ exports.handle = function handle(client) {
 
     prompt() {
       client.addTextResponse('Apologies, but this app needs to go back to school!')
-      client.done()
-    }
-  })
-
-  const handleGreeting = client.createStep({
-    satisfied() {
-      return false
-    },
-
-    prompt() {
-      client.addTextResponse('Hello world, I mean human')
       client.done()
     }
   })
@@ -62,9 +51,9 @@ exports.handle = function handle(client) {
     },
     streams: {
       goodbye: handleGoodbye,
-      greeting: handleGreeting,
+      greeting: [introduceSelf],
+      hi: introduceSelf,
       main: 'commerce',
-      hi: [sayHello],
       end: [untrained],
       commerce: [commerce.collectKeyword, commerce.provideResult],
     }
