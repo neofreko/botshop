@@ -22,7 +22,7 @@ let carouselify = (ichibaResult) => {
 }
 
 module.exports = (keyword, next) => {
-    let requestUrl = `https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=${encodeURIComponent(keyword)}&applicationId=1075485740553130539`
+    let requestUrl = `https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=${encodeURIComponent(keyword)}&affiliateId=14c57ba7.c92fb9a6.14c57ba8.efedfbe5&applicationId=1075485740553130539`
     request(requestUrl, (err, res, body) => {
         if (err) {
             throw new Error(err)
