@@ -10,7 +10,7 @@ let carouselify = (ichibaResult) => {
             return {
                 'media_url': data.smallImageUrls[0].imageUrl,
                 'media_type': 'image/jpeg',
-                'description': data.itemCaption,
+                'description': data.itemCaption.substring(0, 100),
                 title: data.itemName.substring(0, 80),
                 actions: [{
                     type: 'link',
