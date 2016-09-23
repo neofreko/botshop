@@ -8,9 +8,7 @@ exports.handle = function handle(client) {
     },
 
     prompt() {
-      client.addTextResponse('Hello human')
-      client.addTextResponse('I can help you search any e-commerce item')
-      client.addTextResponse('Tell me any keyword to look for')
+      client.addTextResponse("Hello human\nI can help you search any e-commerce item\nTell me any keyword to look for")
       client.updateConversationState({
         helloSent: true
       })
