@@ -9,7 +9,7 @@ timestamp: 2016-09-22T22:32:49.218084678+09:00
 < Hello human
 * greeting
 
-< I can help you search any [e-commerce](keyword) item
+< I can help you search any e-commerce item
 * greeting/temporal
 
 < Tell me any keyword to look for
@@ -18,11 +18,11 @@ timestamp: 2016-09-22T22:32:49.218084678+09:00
 [tomica](keyword)
 * commerce/search
 
-< No problem, here are [tomica](keyword) for you :)
+< No problem, here are "[tomica](keyword)" for you :)
 * commerce/search_result
 
 [new balance](keyword)
 * commerce/search
 
-< Coming right up. List of [tomica](keyword)
+< Coming right up. List of "[tomica](keyword)" stuff
 * commerce/search_result
