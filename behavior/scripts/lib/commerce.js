@@ -26,7 +26,7 @@ module.exports = client => {
 
             prompt() {
                 client.addResponse('app:response:name:prompt/keyword')
-                client.expect(client.getStreamName(), ['decline', 'commerce_query'])
+                //client.expect('commerce', ['decline', 'commerce_query'])
                 client.done()
             }
         }),
