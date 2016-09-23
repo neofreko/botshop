@@ -16,13 +16,13 @@ timestamp: 2016-09-22T22:32:49.218084678+09:00
 * greeting/temporal
 
 [tomica](keyword)
-* commerce/search
+* commerce_query/search
 
 < No problem, here are "[tomica](keyword)" for you :)
 * commerce/search_result
 
 [new balance](keyword)
-* commerce/search
+* commerce_query/search
 
 < Coming right up. List of "[tomica](keyword)" stuff
 * commerce/search_result

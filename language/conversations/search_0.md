@@ -5,4 +5,4 @@ hey there
 * prompt/keyword
 
 [Tomica](keyword)
-* commerce/search
+* commerce_query/search

@@ -1,5 +1,5 @@
 'use strict'
-
+let util = require('./lib/util')
 exports.handle = function handle(client) {
 
   const introduceSelf = client.createStep({
@@ -8,7 +8,15 @@ exports.handle = function handle(client) {
     },
 
     prompt() {
-      client.addTextResponse("Hello. I can help you search any e-commerce item\nTell me any keyword to look for")
+      let baseClassification = client.getMessagePart().classification.base_type.value
+      let subType = client.getMessagePart().classification.sub_type.value
+      let hello = 'Hello'
+      
+      if (baseClassification == 'greeting' && subType == 'temporal') {
+        hello = client.getMessagePart().content
+      }
+      
+      client.addTextResponse(`${hello}. I can help you search any e-commerce item\nTell me any keyword to look for`)
       client.updateConversationState({
         helloSent: true
       })

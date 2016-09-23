@@ -1,16 +1,7 @@
 'use strict'
 
 let ichiba = require('./ichiba')
-
-const firstOfEntityRole = function(message, entity, role) {
-    role = role || 'generic';
-
-    const slots = message.slots
-    const entityValues = message.slots[entity]
-    const valsForRole = entityValues ? entityValues.values_by_role[role] : null
-
-    return valsForRole ? valsForRole[0] : null
-}
+let util = require('./util')
 
 module.exports = client => {
     return {
@@ -21,7 +12,7 @@ module.exports = client => {
             },
 
             extractInfo() {
-                const keyword = firstOfEntityRole(client.getMessagePart(), 'keyword')
+                const keyword = util.firstOfEntityRole(client.getMessagePart(), 'keyword')
 
                 if (keyword) {
                     client.updateConversationState({
@@ -35,6 +26,7 @@ module.exports = client => {
 
             prompt() {
                 client.addResponse('app:response:name:prompt/keyword')
+                client.expect(client.getStreamName(), ['decline', 'commerce_query'])
                 client.done()
             }
         }),
