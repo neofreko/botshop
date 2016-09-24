@@ -63,7 +63,7 @@ exports.handle = function handle(client) {
       hi: introduceSelf,
       main: 'commerce',
       end: [untrained],
-      commerce: [commerce.collectKeyword, commerce.provideResult],
+      commerce: [commerce.collectKeyword, commerce.confirmKeyword, commerce.provideResult],
     }
   })
 }

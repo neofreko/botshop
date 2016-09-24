@@ -9,8 +9,8 @@ hi
 < Hi. What can I search for you?
 * prompt/keyword
 
-robot
+search [robot](keyword)
 * commerce_query/search
 
-< Okay, here are some "robot" I can found
+< Okay, here are some "[robot](keyword)" I can found
 * commerce/search_result
